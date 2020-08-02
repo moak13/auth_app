@@ -1,4 +1,3 @@
-import 'package:auth_app/pages/auth_page/login.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
@@ -14,6 +13,19 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: LoginPage(),
+    );
+  }
+}
+
+class LoginPage extends StatelessWidget {
+  const LoginPage({Key key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Center(
+        child: Text('Codebase Reset'),
+      ),
     );
   }
 }
