@@ -25,6 +25,7 @@ dependencies:
   stacked: ^1.7.5
   stacked_services: ^0.5.0
   get_it: ^4.0.4
+  flutter_platform_widgets: ^0.51.0
 
   
   
