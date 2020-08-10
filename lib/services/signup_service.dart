@@ -45,14 +45,7 @@ class SignupServiceImpl implements SignupService {
         return Result(error: ServerError(err.toString()));
       }
     } else {
-      try {
-        final response = await localDataSource.getResponse();
-        final data = response.toSignup();
-        return Result(
-            success: data, error: NoInternetError('No Internet Connection'));
-      } on CacheException catch (err) {
-        return Result(error: CacheError(err.toString()));
-      }
+      return Result(error: NoInternetError('No Internet Connection'));
     }
   }
 }

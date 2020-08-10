@@ -43,9 +43,12 @@ class DataLocalDataSourceImpl implements DataLocalDataSource {
 
   @override
   Future<MergedModel> saveResponse({MergedModel data}) {
+    print('json printing');
     print(data.toJson());
     final value = json.decode(data.toJson());
-    pref.saveData(key: key, value: value);
+    print('string printing');
+    print(value.toString());
+    pref.saveData(key: key, value: value.toString());
     return Future.value(data);
   }
 

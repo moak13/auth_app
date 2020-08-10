@@ -25,7 +25,8 @@ class LoginViewModel extends BaseViewModel {
   Future<Result<LoginModel>> login({String email, String password}) async {
     final response =
         await loginService.performLogin(email: email, password: password);
-    print(response);
+    print('in viewmodel');
+    print(response.success.id);
     return response;
   }
 }

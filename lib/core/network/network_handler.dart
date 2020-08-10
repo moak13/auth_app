@@ -25,6 +25,8 @@ class NetworkHandlerImpl implements NetworkHandler {
   Future<http.Response> handlePost(
       {String url, Map<String, dynamic> body, Map<String, String> headers}) {
     final response = client.post(url, body: body, headers: headers);
+    print('remote data response printing');
+    print(response);
     return response;
   }
 }

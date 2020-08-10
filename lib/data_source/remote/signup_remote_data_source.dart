@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import '../../core/error/exceptions.dart';
 import '../../core/network/network_handler.dart';
 import '../../locator.dart';
@@ -38,15 +36,13 @@ class SignupRemoteDataSourceImpl implements SignupRemoteDataSource {
       'password': password,
     };
 
-    Map<String, String> headers = {
-      'content-type': 'application/json',
-    };
-
-    final response =
-        await client.handlePost(url: url, body: body, headers: headers);
+    final response = await client.handlePost(
+      url: url,
+      body: body,
+    );
 
     if (response.statusCode == 200) {
-      return SignupModel.fromJson(json.decode(response.body));
+      return SignupModel.fromJson(response.body);
     } else {
       throw ServerException();
     }

@@ -19,8 +19,8 @@ class WelcomeView extends StatelessWidget {
           );
           return Scaffold(
             body: Container(
-              height: ScreenUtil().setHeight(ScreenUtil.screenHeight),
-              width: ScreenUtil().setWidth(ScreenUtil.screenWidth),
+              // height: ScreenUtil().setHeight(ScreenUtil.screenHeight),
+              // width: ScreenUtil().setWidth(ScreenUtil.screenWidth),
               child: Center(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
