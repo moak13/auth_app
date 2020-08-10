@@ -17,6 +17,7 @@ GetIt locator = GetIt.instance;
 
 Future<void> setupLocator() async {
   locator.registerLazySingleton(() => NavigationService());
+  locator.registerLazySingleton(() => DialogService());
   final pref = await SharedPreferences.getInstance();
   locator.registerLazySingleton<SharedPreferences>(() => pref);
   locator.registerLazySingleton<PrefHandler>(() => PrefHandlerImpl());

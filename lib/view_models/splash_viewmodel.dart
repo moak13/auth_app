@@ -21,7 +21,8 @@ class SplashViewModel extends BaseViewModel {
       return navigationService.navigateTo('/welcome-view');
     } else {
       print('data not null');
-      return navigationService.navigateTo('home-view');
+      print(data.loginModel.id);
+      return navigationService.navigateTo('/home-view');
     }
   }
 

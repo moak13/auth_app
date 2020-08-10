@@ -52,7 +52,9 @@ class _LoginViewState extends State<LoginView> {
                   onPressed: () {
                     model.login(email: ctrlEmail.text, password: ctrlPass.text);
                   },
-                  child: Text('submit'),
+                  child: model.isBusy
+                      ? CircularProgressIndicator()
+                      : Text('submit'),
                 ),
               ],
             ),
