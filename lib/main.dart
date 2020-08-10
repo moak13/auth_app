@@ -1,6 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:stacked_services/stacked_services.dart';
 
-void main() => runApp(MyApp());
+import 'core/utils/router.gr.dart';
+import 'locator.dart';
+
+void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  setupLocator();
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
@@ -12,20 +20,15 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: LoginPage(),
+      navigatorKey: locator<NavigationService>().navigatorKey,
+      initialRoute: Routes.signupView,
+      onGenerateRoute: Router().onGenerateRoute,
     );
-  }
-}
 
-class LoginPage extends StatelessWidget {
-  const LoginPage({Key key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: Center(
-        child: Text('Codebase Reset'),
-      ),
-    );
+    // return PlatformApp(
+    //   debugShowCheckedModeBanner: false,
+    //   title: 'Auth App',
+    //   color: Colors.blue,
+    // );
   }
 }

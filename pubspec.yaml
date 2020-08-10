@@ -26,9 +26,10 @@ dependencies:
   stacked_services: ^0.5.0
   get_it: ^4.0.4
   flutter_platform_widgets: ^0.51.0
-
-  
-  
+  equatable: ^1.2.3
+  data_connection_checker: ^0.3.4
+  floor: ^0.14.0
+  auto_route: ^0.6.7
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -37,11 +38,12 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
+  floor_generator: ^0.14.0
+  auto_route_generator: ^0.6.8
+  build_runner: ^1.10.1
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
-
 # The following section is specific to Flutter.
 flutter:
 
@@ -49,18 +51,14 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
-
   # To add assets to your application, add an assets section, like this:
   # assets:
   #  - images/a_dot_burr.jpeg
   #  - images/a_dot_ham.jpeg
-
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
-
   # For details regarding adding assets from package dependencies, see
   # https://flutter.dev/assets-and-images/#from-packages
-
   # To add custom fonts to your application, add a fonts section here,
   # in this "flutter" section. Each entry in this list should have a
   # "family" key with the font family name, and a "fonts" key with a
@@ -80,3 +78,4 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+
