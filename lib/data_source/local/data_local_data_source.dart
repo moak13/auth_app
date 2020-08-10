@@ -24,8 +24,9 @@ final String key = 'data';
 class DataLocalDataSourceImpl implements DataLocalDataSource {
   final pref = locator<PrefHandler>();
   @override
-  Future<MergedModel> getResponse() {
-    final data = pref.getData(key: key);
+  Future<MergedModel> getResponse() async {
+    final data = await pref.getData(key: key);
+    print('figuring out the data from local');
     print(data.toString());
     if (data != null) {
       final value = MergedModel.fromJson(json.encode(data));

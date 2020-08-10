@@ -4,9 +4,9 @@ import 'package:stacked_services/stacked_services.dart';
 import 'core/utils/router.gr.dart';
 import 'locator.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  setupLocator();
+  await setupLocator();
   runApp(MyApp());
 }
 
