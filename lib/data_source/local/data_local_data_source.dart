@@ -30,7 +30,7 @@ class DataLocalDataSourceImpl implements DataLocalDataSource {
       final value = AuthModel.fromJson(json.encode(data));
       return Future.value(value);
     } else {
-      final value = AuthModel(id: 0, token: '', message: '');
+      final value = AuthModel(id: null, token: '', message: '');
       return Future.value(value);
     }
   }
