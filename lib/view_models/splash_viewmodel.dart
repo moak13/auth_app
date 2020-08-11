@@ -15,7 +15,7 @@ class SplashViewModel extends BaseViewModel {
     final data = await pref.getResponse();
     print('checking...');
     print(data.id);
-    if (data.id == null && data.id > 0) {
+    if (data.id == null && data.id == 0) {
       print('data is null');
       return navigationService.navigateTo('/welcome-view');
     } else {
