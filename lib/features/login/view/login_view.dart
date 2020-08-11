@@ -29,6 +29,7 @@ class _LoginViewState extends State<LoginView> {
                         model.popPage();
                       }),
                 ),
+                Text('Login.'),
                 TextField(
                   controller: ctrlEmail,
                   decoration:
