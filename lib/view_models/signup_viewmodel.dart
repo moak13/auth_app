@@ -3,7 +3,7 @@ import 'package:stacked_services/stacked_services.dart';
 
 import '../core/utils/result.dart';
 import '../locator.dart';
-import '../models/signup_model.dart';
+import '../models/auth_model.dart';
 import '../services/signup_service.dart';
 
 class SignupViewModel extends BaseViewModel {
@@ -23,7 +23,7 @@ class SignupViewModel extends BaseViewModel {
     notifyListeners();
   }
 
-  Future<Result<SignupModel>> signup(
+  Future<Result<AuthModel>> signup(
       {String firstname,
       String lastname,
       String email,

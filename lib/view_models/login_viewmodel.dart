@@ -3,7 +3,7 @@ import 'package:stacked_services/stacked_services.dart';
 
 import '../core/utils/result.dart';
 import '../locator.dart';
-import '../models/login_model.dart';
+import '../models/auth_model.dart';
 import '../services/login_service.dart';
 
 class LoginViewModel extends BaseViewModel {
@@ -23,7 +23,7 @@ class LoginViewModel extends BaseViewModel {
     notifyListeners();
   }
 
-  Future<Result<LoginModel>> login({String email, String password}) async {
+  Future<Result<AuthModel>> login({String email, String password}) async {
     setBusy(true);
     final response =
         await _loginService.performLogin(email: email, password: password);

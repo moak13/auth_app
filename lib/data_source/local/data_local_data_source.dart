@@ -2,20 +2,18 @@ import 'dart:convert';
 
 import '../../core/persist/pref/pref_handler.dart';
 import '../../locator.dart';
-import '../../models/login_model.dart';
-import '../../models/merged_model.dart';
-import '../../models/signup_model.dart';
+import '../../models/auth_model.dart';
 
 /// This handles the storing and retriving of token
 abstract class DataLocalDataSource {
   /// This gets the stored token
-  Future<MergedModel> getResponse();
+  Future<AuthModel> getResponse();
 
   /// This saves the retrived token
-  Future<MergedModel> saveResponse({MergedModel data});
+  Future<AuthModel> saveResponse({AuthModel data});
 
   /// This clears the stored token
-  Future<MergedModel> deleteResponse();
+  Future<AuthModel> deleteResponse();
 }
 
 final String key = 'data';
@@ -24,25 +22,21 @@ final String key = 'data';
 class DataLocalDataSourceImpl implements DataLocalDataSource {
   final pref = locator<PrefHandler>();
   @override
-  Future<MergedModel> getResponse() async {
+  Future<AuthModel> getResponse() async {
     final data = await pref.getData(key: key);
     print('figuring out the data from local');
     print(data.toString());
     if (data != null) {
-      final value = MergedModel.fromJson(json.encode(data));
+      final value = AuthModel.fromJson(json.encode(data));
       return Future.value(value);
     } else {
-      return Future.value(
-        MergedModel(
-          loginModel: LoginModel(id: null, token: '', message: ''),
-          signupModel: SignupModel(id: null, token: '', message: ''),
-        ),
-      );
+      final value = AuthModel(id: 0, token: '', message: '');
+      return Future.value(value);
     }
   }
 
   @override
-  Future<MergedModel> saveResponse({MergedModel data}) {
+  Future<AuthModel> saveResponse({AuthModel data}) {
     print('json printing');
     print(data.toJson());
     final value = json.decode(data.toJson());
@@ -53,7 +47,7 @@ class DataLocalDataSourceImpl implements DataLocalDataSource {
   }
 
   @override
-  Future<MergedModel> deleteResponse() {
+  Future<AuthModel> deleteResponse() {
     return pref.deleteData(key: key);
   }
 }

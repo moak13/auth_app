@@ -1,14 +1,14 @@
 import '../../core/error/exceptions.dart';
 import '../../core/network/network_handler.dart';
 import '../../locator.dart';
-import '../../models/signup_model.dart';
+import '../../models/auth_model.dart';
 
 const String url = 'https://lmu-dj-api.herokuapp.com/rest-auth/registration/';
 
 /// This handles the connection of the application to API's.
 abstract class SignupRemoteDataSource {
   /// This invokes the signup request.
-  Future<SignupModel> createUser({
+  Future<AuthModel> createUser({
     String firstname,
     String lastname,
     String email,
@@ -22,7 +22,7 @@ class SignupRemoteDataSourceImpl implements SignupRemoteDataSource {
   final client = locator<NetworkHandler>();
 
   @override
-  Future<SignupModel> createUser(
+  Future<AuthModel> createUser(
       {String firstname,
       String lastname,
       String email,
@@ -42,7 +42,7 @@ class SignupRemoteDataSourceImpl implements SignupRemoteDataSource {
     );
 
     if (response.statusCode == 200) {
-      return SignupModel.fromJson(response.body);
+      return AuthModel.fromJson(response.body);
     } else {
       throw ServerException();
     }

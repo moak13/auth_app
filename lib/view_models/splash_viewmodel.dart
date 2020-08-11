@@ -14,14 +14,13 @@ class SplashViewModel extends BaseViewModel {
     print('jumping in');
     final data = await pref.getResponse();
     print('checking...');
-    print(data.loginModel.id);
-    print(data.signupModel.id);
-    if (data.loginModel.id == null && data.signupModel.id == null) {
+    print(data.id);
+    if (data.id == null && data.id > 0) {
       print('data is null');
       return navigationService.navigateTo('/welcome-view');
     } else {
       print('data not null');
-      print(data.loginModel.id);
+      print(data.id);
       return navigationService.navigateTo('/home-view');
     }
   }

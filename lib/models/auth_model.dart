@@ -2,11 +2,11 @@ import 'dart:convert';
 
 import 'package:equatable/equatable.dart';
 
-class LoginModel extends Equatable {
+class AuthModel extends Equatable {
   final int id;
   final String token;
   final String message;
-  LoginModel({
+  AuthModel({
     this.id,
     this.token,
     this.message,
@@ -23,10 +23,10 @@ class LoginModel extends Equatable {
     };
   }
 
-  factory LoginModel.fromMap(Map<String, dynamic> map) {
+  factory AuthModel.fromMap(Map<String, dynamic> map) {
     if (map == null) return null;
 
-    return LoginModel(
+    return AuthModel(
       id: map['user_id'],
       token: map['token'],
       message: map['message'],
@@ -35,6 +35,6 @@ class LoginModel extends Equatable {
 
   String toJson() => json.encode(toMap());
 
-  factory LoginModel.fromJson(String source) =>
-      LoginModel.fromMap(json.decode(source));
+  factory AuthModel.fromJson(String source) =>
+      AuthModel.fromMap(json.decode(source));
 }

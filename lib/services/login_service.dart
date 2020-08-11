@@ -4,11 +4,10 @@ import '../core/utils/result.dart';
 import '../data_source/local/data_local_data_source.dart';
 import '../data_source/remote/login_remote_data_source.dart';
 import '../locator.dart';
-import '../models/login_model.dart';
-import '../models/merged_model.dart';
+import '../models/auth_model.dart';
 
 abstract class LoginService {
-  Future<Result<LoginModel>> performLogin({String email, String password});
+  Future<Result<AuthModel>> performLogin({String email, String password});
 }
 
 class LoginServiceImpl implements LoginService {
@@ -16,14 +15,14 @@ class LoginServiceImpl implements LoginService {
   final localDataSource = locator<DataLocalDataSource>();
   final networkInfo = locator<NetworkInfo>();
   @override
-  Future<Result<LoginModel>> performLogin(
+  Future<Result<AuthModel>> performLogin(
       {String email, String password}) async {
     bool isConnected = await networkInfo.isConnected;
     if (isConnected) {
       try {
         final response =
             await remoteDataSource.getUser(email: email, password: password);
-        localDataSource.saveResponse(data: MergedModel(loginModel: response));
+        localDataSource.saveResponse(data: response);
         return Result(success: response);
       } on ServerException catch (err) {
         print('because server error happened: ${err.toString()}');

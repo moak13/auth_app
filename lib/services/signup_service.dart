@@ -4,11 +4,10 @@ import '../core/utils/result.dart';
 import '../data_source/local/data_local_data_source.dart';
 import '../data_source/remote/signup_remote_data_source.dart';
 import '../locator.dart';
-import '../models/merged_model.dart';
-import '../models/signup_model.dart';
+import '../models/auth_model.dart';
 
 abstract class SignupService {
-  Future<Result<SignupModel>> performSignup({
+  Future<Result<AuthModel>> performSignup({
     String firstname,
     String lastname,
     String email,
@@ -22,7 +21,7 @@ class SignupServiceImpl implements SignupService {
   final localDataSource = locator<DataLocalDataSource>();
   final networkInfo = locator<NetworkInfo>();
   @override
-  Future<Result<SignupModel>> performSignup({
+  Future<Result<AuthModel>> performSignup({
     String firstname,
     String lastname,
     String email,
@@ -39,7 +38,7 @@ class SignupServiceImpl implements SignupService {
           username: username,
           password: password,
         );
-        localDataSource.saveResponse(data: MergedModel(signupModel: response));
+        localDataSource.saveResponse(data: response);
         return Result(success: response);
       } on ServerException catch (err) {
         return Result(error: ServerError(err.toString()));
