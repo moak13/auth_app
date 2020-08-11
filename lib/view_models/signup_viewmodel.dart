@@ -37,23 +37,20 @@ class SignupViewModel extends BaseViewModel {
         username: username,
         password: password);
     setBusy(false);
+    print('in signup viewmodel');
     if (response.success.id != null) {
+      print('Signup Success!');
       _navigationService.navigateTo('/home_view');
-      // await _dialogService.showDialog(
-      //   title: 'Yay!',
-      //   description: response.success.message,
-      //   buttonTitle: 'OK',
-      // );
-      await _dialogService.showConfirmationDialog(
+      await _dialogService.showDialog(
         title: 'Yay!',
         description: response.success.message,
-        cancelTitle: 'OK',
+        buttonTitle: 'OK',
       );
-      return response;
     } else {
+      print('Signup Failure!');
       await _dialogService.showDialog(
         title: 'Error!',
-        description: response.error.message,
+        description: response.success.message,
         buttonTitle: 'OK',
       );
       return response;

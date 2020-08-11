@@ -41,6 +41,7 @@ class SignupServiceImpl implements SignupService {
         localDataSource.saveResponse(data: response);
         return Result(success: response);
       } on ServerException catch (err) {
+        print('because server error happened: ${err.toString()}');
         return Result(error: ServerError(err.toString()));
       }
     } else {

@@ -28,7 +28,7 @@ class LoginViewModel extends BaseViewModel {
     final response =
         await _loginService.performLogin(email: email, password: password);
     setBusy(false);
-    print('in viewmodel');
+    print('in login viewmodel');
     print(response.success.id);
     if (response.success.id != null) {
       print('Login Success!');
