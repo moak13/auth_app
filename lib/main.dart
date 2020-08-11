@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       navigatorKey: locator<NavigationService>().navigatorKey,
-      initialRoute: Routes.signupView,
+      initialRoute: Routes.splashView,
       onGenerateRoute: Router().onGenerateRoute,
     );
 

@@ -43,7 +43,7 @@ class LoginViewModel extends BaseViewModel {
       print('Login Error!');
       await _dialogService.showDialog(
         title: 'Opps!',
-        description: response.error.message,
+        description: response.success.message,
         buttonTitle: 'OK',
       );
       return response;

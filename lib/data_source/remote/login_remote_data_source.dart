@@ -29,7 +29,9 @@ class LoginRemoteDataSourceImpl implements LoginRemoteDataSource {
     if (response.statusCode == 200) {
       return LoginModel.fromJson(response.body);
     } else {
-      throw ServerException();
+      print('error from login remote');
+      print(response.body);
+      throw ServerException(message: response.body);
     }
   }
 }
