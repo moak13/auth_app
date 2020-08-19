@@ -4,15 +4,15 @@ import '../../core/persist/pref/pref_handler.dart';
 import '../../locator.dart';
 import '../../models/auth_model.dart';
 
-/// This handles the storing and retriving of data
+/// This handles the storing and retriving of auth data
 abstract class DataLocalDataSource {
-  /// This gets the stored data
+  /// This gets the stored auth data
   Future<AuthModel> getResponse();
 
-  /// This saves the retrived data
+  /// This saves the retrived auth data
   Future<AuthModel> saveResponse({AuthModel data});
 
-  /// This clears the stored data
+  /// This clears the stored auth data
   Future<AuthModel> deleteResponse();
 }
 
