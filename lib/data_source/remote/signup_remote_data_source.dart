@@ -45,7 +45,8 @@ class SignupRemoteDataSourceImpl implements SignupRemoteDataSource {
       return AuthModel.fromJson(response.body);
     } else {
       print('error from signup remote');
-      throw ServerException();
+      print(response.body);
+      throw ServerException(message: response.body);
     }
   }
 }
