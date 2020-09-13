@@ -41,8 +41,8 @@ class SignupServiceImpl implements SignupService {
         localDataSource.saveResponse(data: response);
         return Result(success: response);
       } on ServerException catch (err) {
-        print('because server error happened: ${err.toString()}');
-        return Result(error: ServerError(err.toString()));
+        print('because server error happened: ${err.message}');
+        return Result(error: ServerError(err.message));
       }
     } else {
       return Result(error: NoInternetError('No Internet Connection'));

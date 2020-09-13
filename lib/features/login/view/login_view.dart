@@ -15,6 +15,11 @@ class _LoginViewState extends State<LoginView> {
   TextEditingController ctrlPass = TextEditingController();
   @override
   Widget build(BuildContext context) {
+    double height = MediaQuery.of(context).size.height;
+    double scaleHeight = height / 100;
+    double width = MediaQuery.of(context).size.width;
+    double scaleWidth = width / 100;
+    double sizeText = MediaQuery.of(context).textScaleFactor;
     return ViewModelBuilder<LoginViewModel>.reactive(
         builder: (context, model, child) {
           return Scaffold(
@@ -64,21 +69,42 @@ class _LoginViewState extends State<LoginView> {
                             })),
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: RaisedButton(
-                    onPressed: () {
-                      model.login(
-                        email: ctrlEmail.text,
-                        password: ctrlPass.text,
-                      );
-                    },
-                    child: model.isBusy
-                        ? Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: CircularProgressIndicator(),
-                          )
-                        : Text('submit'),
+                Align(
+                  alignment: Alignment.bottomRight,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: InkWell(
+                      onTap: () {
+                        model.login(
+                          email: ctrlEmail.text,
+                          password: ctrlPass.text,
+                        );
+                      },
+                      child: Container(
+                        height: scaleHeight * 8,
+                        width: scaleWidth * 25,
+                        decoration: BoxDecoration(
+                          color: Colors.purple,
+                          shape: BoxShape.rectangle,
+                          borderRadius: BorderRadius.circular(5),
+                        ),
+                        child: model.isBusy
+                            ? Center(
+                                child: CircularProgressIndicator(
+                                  backgroundColor: Colors.white,
+                                  strokeWidth: 2,
+                                ),
+                              )
+                            : Center(
+                                child: Text(
+                                  'submit',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                      ),
+                    ),
                   ),
                 ),
               ],
