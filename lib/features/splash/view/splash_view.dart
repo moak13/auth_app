@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/screenutil.dart';
 import 'package:stacked/stacked.dart';
 
 import '../../../view_models/splash_viewmodel.dart';
@@ -9,37 +8,37 @@ class SplashView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ScreenUtil.init(
-      context,
-      height: ScreenUtil.screenHeight,
-      width: ScreenUtil.screenWidth,
-      allowFontScaling: true,
-    );
+    double height = MediaQuery.of(context).size.height;
+    double scaleHeight = height / 100;
+    double width = MediaQuery.of(context).size.width;
+    double scaleWidth = width / 100;
+    double sizeText = MediaQuery.of(context).textScaleFactor;
     return ViewModelBuilder<SplashViewModel>.reactive(
         onModelReady: (model) => model.handleMove(),
         builder: (context, model, child) {
           return Scaffold(
             body: Container(
-              height: ScreenUtil.screenHeight,
-              width: ScreenUtil.screenWidth,
+              height: height,
+              width: width,
               color: Theme.of(context).primaryColor.withOpacity(0.5),
               child: Center(
                   child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Text(
                     'Auth',
                     style: TextStyle(
                       color: Colors.white,
-                      fontSize: ScreenUtil().setSp(12),
+                      fontSize: sizeText * 20,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                   SizedBox(
-                    width: ScreenUtil().setWidth(30),
+                    width: scaleWidth * 3,
                   ),
                   Container(
-                    height: ScreenUtil().setHeight(20),
-                    width: ScreenUtil().setWidth(20),
+                    height: scaleHeight * 20,
+                    width: scaleWidth * 20,
                     decoration: BoxDecoration(
                       color: Colors.white,
                       shape: BoxShape.circle,
@@ -49,7 +48,7 @@ class SplashView extends StatelessWidget {
                         'App',
                         style: TextStyle(
                           color: Theme.of(context).primaryColor,
-                          fontSize: ScreenUtil().setSp(12),
+                          fontSize: sizeText * 20,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
