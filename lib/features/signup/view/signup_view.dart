@@ -140,6 +140,7 @@ class _SignupViewState extends State<SignupView> {
                                   child: Text(
                                     'submit',
                                     style: TextStyle(
+                                      fontSize: sizeText * 15,
                                       color: Colors.white,
                                     ),
                                   ),

@@ -40,7 +40,13 @@ class _LoginViewState extends State<LoginView> {
                 ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: Text('Login.', style: TextStyle(fontSize: 35)),
+                  child: Text(
+                    'Login.',
+                    style: TextStyle(
+                      fontSize: sizeText * 30,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                 ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
@@ -100,6 +106,7 @@ class _LoginViewState extends State<LoginView> {
                                   'submit',
                                   style: TextStyle(
                                     color: Colors.white,
+                                    fontSize: sizeText * 15,
                                   ),
                                 ),
                               ),
