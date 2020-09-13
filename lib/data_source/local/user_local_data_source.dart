@@ -32,12 +32,11 @@ class UserLocalDataSourceImpl implements UserLocalDataSource {
       final value = UserModel.fromJson(json.encode(data));
       return Future.value(value);
     } else {
-      final userData = UserModel.fromJson(data);
       final value = UserModel(
-        id: userData.id,
-        name: userData.name,
-        email: userData.email,
-        username: userData.username,
+        id: 0,
+        name: '',
+        email: '',
+        username: '',
       );
       return Future.value(value);
     }

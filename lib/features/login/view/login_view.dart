@@ -18,44 +18,68 @@ class _LoginViewState extends State<LoginView> {
     return ViewModelBuilder<LoginViewModel>.reactive(
         builder: (context, model, child) {
           return Scaffold(
-              body: Container(
+              body: SafeArea(
             child: ListView(
               children: <Widget>[
-                Align(
-                  alignment: Alignment.topLeft,
-                  child: IconButton(
-                      icon: Icon(Icons.close),
-                      onPressed: () {
-                        model.popPage();
-                      }),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Align(
+                    alignment: Alignment.topLeft,
+                    child: IconButton(
+                        icon: Icon(Icons.close),
+                        iconSize: 35,
+                        onPressed: () {
+                          model.popPage();
+                        }),
+                  ),
                 ),
-                Text('Login.'),
-                TextField(
-                  controller: ctrlEmail,
-                  decoration:
-                      InputDecoration(labelText: 'Email', hintText: 'email'),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text('Login.', style: TextStyle(fontSize: 35)),
                 ),
-                TextField(
-                  controller: ctrlPass,
-                  obscureText: model.isPassword,
-                  decoration: InputDecoration(
-                      labelText: 'Password',
-                      hintText: 'password',
-                      suffixIcon: IconButton(
-                          icon: model.isPassword
-                              ? Icon(Icons.visibility)
-                              : Icon(Icons.visibility_off),
-                          onPressed: () {
-                            model.toggle();
-                          })),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: TextField(
+                    controller: ctrlEmail,
+                    decoration: InputDecoration(
+                      labelText: 'Email',
+                      hintText: 'enter your email',
+                    ),
+                  ),
                 ),
-                RaisedButton(
-                  onPressed: () {
-                    model.login(email: ctrlEmail.text, password: ctrlPass.text);
-                  },
-                  child: model.isBusy
-                      ? CircularProgressIndicator()
-                      : Text('submit'),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: TextField(
+                    controller: ctrlPass,
+                    obscureText: model.isPassword,
+                    decoration: InputDecoration(
+                        labelText: 'Password',
+                        hintText: 'enter your password',
+                        suffixIcon: IconButton(
+                            icon: model.isPassword
+                                ? Icon(Icons.visibility)
+                                : Icon(Icons.visibility_off),
+                            onPressed: () {
+                              model.toggle();
+                            })),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: RaisedButton(
+                    onPressed: () {
+                      model.login(
+                        email: ctrlEmail.text,
+                        password: ctrlPass.text,
+                      );
+                    },
+                    child: model.isBusy
+                        ? Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: CircularProgressIndicator(),
+                          )
+                        : Text('submit'),
+                  ),
                 ),
               ],
             ),

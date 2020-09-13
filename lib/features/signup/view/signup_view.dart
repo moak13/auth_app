@@ -1,6 +1,7 @@
-import 'package:auth_app/view_models/signup_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
+
+import '../../../view_models/signup_viewmodel.dart';
 
 class SignupView extends StatefulWidget {
   SignupView({Key key}) : super(key: key);
@@ -20,74 +21,74 @@ class _SignupViewState extends State<SignupView> {
     return ViewModelBuilder<SignupViewModel>.reactive(
         builder: (context, model, child) {
           return Scaffold(
-            body: Container(
-              child: ListView(
-                children: <Widget>[
-                  Align(
-                      alignment: Alignment.topLeft,
-                      child: IconButton(
-                          icon: Icon(Icons.clear),
-                          onPressed: () => model.popPage())),
-                  Text('Sign Up'),
-                  TextField(
-                    controller: ctrlFirst,
-                    decoration: InputDecoration(
-                      labelText: 'Firstname',
-                      hintText: 'firstname',
-                    ),
+            body: ListView(
+              children: <Widget>[
+                Align(
+                  alignment: Alignment.topLeft,
+                  child: IconButton(
+                    icon: Icon(Icons.clear),
+                    onPressed: () => model.popPage(),
                   ),
-                  TextField(
-                    controller: ctrlLast,
-                    decoration: InputDecoration(
-                      labelText: 'Lastname',
-                      hintText: 'lastname',
-                    ),
+                ),
+                Text('Sign Up'),
+                TextField(
+                  controller: ctrlFirst,
+                  decoration: InputDecoration(
+                    labelText: 'First Name',
+                    hintText: 'enter your first name',
                   ),
-                  TextField(
-                    controller: ctrlEmail,
-                    decoration: InputDecoration(
-                      labelText: 'Email',
-                      hintText: 'email',
-                    ),
+                ),
+                TextField(
+                  controller: ctrlLast,
+                  decoration: InputDecoration(
+                    labelText: 'Last Name',
+                    hintText: 'enter your last name',
                   ),
-                  TextField(
-                    controller: ctrlUsername,
-                    decoration: InputDecoration(
-                      labelText: 'Usename',
-                      hintText: 'username',
-                    ),
+                ),
+                TextField(
+                  controller: ctrlEmail,
+                  decoration: InputDecoration(
+                    labelText: 'Email',
+                    hintText: 'enter your email',
                   ),
-                  TextField(
-                    controller: ctrlPassword,
-                    obscureText: model.isPassword,
-                    decoration: InputDecoration(
-                      labelText: 'Password',
-                      hintText: 'password',
-                      suffixIcon: IconButton(
-                          icon: model.isPassword
-                              ? Icon(Icons.visibility)
-                              : Icon(Icons.visibility_off),
-                          onPressed: () {
-                            model.toggle();
-                          }),
-                    ),
+                ),
+                TextField(
+                  controller: ctrlUsername,
+                  decoration: InputDecoration(
+                    labelText: 'Username',
+                    hintText: 'enter your username',
                   ),
-                  RaisedButton(
-                    onPressed: () {
-                      model.signup(
-                        firstname: ctrlFirst.text,
-                        lastname: ctrlLast.text,
-                        email: ctrlEmail.text,
-                        username: ctrlUsername.text,
-                        password: ctrlPassword.text,
-                      );
-                    },
-                    child: model.isBusy
-                        ? CircularProgressIndicator()
-                        : Text('submit'),
-                  )
-                ],
-              ),
+                ),
+                TextField(
+                  controller: ctrlPassword,
+                  obscureText: model.isPassword,
+                  decoration: InputDecoration(
+                    labelText: 'Password',
+                    hintText: 'choose a password',
+                    suffixIcon: IconButton(
+                        icon: model.isPassword
+                            ? Icon(Icons.visibility)
+                            : Icon(Icons.visibility_off),
+                        onPressed: () {
+                          model.toggle();
+                        }),
+                  ),
+                ),
+                RaisedButton(
+                  onPressed: () {
+                    model.signup(
+                      firstname: ctrlFirst.text,
+                      lastname: ctrlLast.text,
+                      email: ctrlEmail.text,
+                      username: ctrlUsername.text,
+                      password: ctrlPassword.text,
+                    );
+                  },
+                  child: model.isBusy
+                      ? CircularProgressIndicator()
+                      : Text('submit'),
+                )
+              ],
             ),
           );
         },
