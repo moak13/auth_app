@@ -30,11 +30,14 @@ class _SignupViewState extends State<SignupView> {
               child: ListView(
                 children: <Widget>[
                   Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.all(5.0),
                     child: Align(
                       alignment: Alignment.topLeft,
                       child: IconButton(
-                        icon: Icon(Icons.clear),
+                        icon: Icon(
+                          Icons.clear,
+                          size: 35,
+                        ),
                         onPressed: () => model.popPage(),
                       ),
                     ),
@@ -42,7 +45,7 @@ class _SignupViewState extends State<SignupView> {
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Text(
-                      'Sign Up',
+                      'Sign Up.',
                       style: TextStyle(
                         fontSize: sizeText * 30,
                         fontWeight: FontWeight.bold,
