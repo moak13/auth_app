@@ -46,7 +46,7 @@ class SignupRemoteDataSourceImpl implements SignupRemoteDataSource {
     } else {
       print('error from signup remote');
       print(response.body);
-      throw ServerException(message: response.body);
+      throw ServerException.fromJson(response.body);
     }
   }
 }

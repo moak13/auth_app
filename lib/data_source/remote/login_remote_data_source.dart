@@ -31,7 +31,7 @@ class LoginRemoteDataSourceImpl implements LoginRemoteDataSource {
     } else {
       print('error from login remote');
       print(response.body);
-      throw ServerException(message: response.body);
+      throw ServerException.fromJson(response.body);
     }
   }
 }
