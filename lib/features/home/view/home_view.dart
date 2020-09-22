@@ -1,6 +1,7 @@
-import 'package:auth_app/view_models/home_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
+
+import '../../../view_models/home_viewmodel.dart';
 
 class HomeView extends StatefulWidget {
   HomeView({Key key}) : super(key: key);
@@ -13,6 +14,11 @@ class _HomeViewState extends State<HomeView> {
   GlobalKey<ScaffoldState> _key = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
+    double height = MediaQuery.of(context).size.height;
+    double scaleHeight = height / 100;
+    double width = MediaQuery.of(context).size.width;
+    double scaleWidth = width / 100;
+    double sizeText = MediaQuery.of(context).textScaleFactor;
     return ViewModelBuilder<HomeViewModel>.reactive(
         onModelReady: (model) => model.fetchUser(),
         builder: (context, model, child) {
@@ -91,15 +97,35 @@ class _HomeViewState extends State<HomeView> {
                                   ? model.userModel.username
                                   : 'Username not found'),
                             ),
-                            Padding(
-                              padding: const EdgeInsets.all(10.0),
-                              child: RaisedButton(
-                                onPressed: () {
-                                  model.logout();
-                                },
-                                child: Text('logout'),
+                            Align(
+                              alignment: Alignment.center,
+                              child: Padding(
+                                padding: const EdgeInsets.all(10.0),
+                                child: InkWell(
+                                  onTap: () {
+                                    model.logout();
+                                  },
+                                  child: Container(
+                                    height: scaleHeight * 8,
+                                    width: scaleWidth * 25,
+                                    decoration: BoxDecoration(
+                                      color: Colors.black,
+                                      shape: BoxShape.rectangle,
+                                      borderRadius: BorderRadius.circular(5),
+                                    ),
+                                    child: Center(
+                                      child: Text(
+                                        'logout',
+                                        style: TextStyle(
+                                          fontSize: sizeText * 15,
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
                               ),
-                            )
+                            ),
                           ],
                         ),
                       )
