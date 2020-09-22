@@ -28,9 +28,7 @@ class LoginViewModel extends BaseViewModel {
     final response =
         await _loginService.performLogin(email: email, password: password);
     setBusy(false);
-    print('in login viewmodel');
     if (response.success != null) {
-      print('Login Success!');
       _navigationService.pushNamedAndRemoveUntil('/home-view');
       await _dialogService.showDialog(
         title: 'Yea!',
@@ -39,7 +37,6 @@ class LoginViewModel extends BaseViewModel {
       );
       return response;
     } else {
-      print('Login Error!');
       await _dialogService.showDialog(
         title: 'Opps!',
         description: response.error.message,

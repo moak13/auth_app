@@ -13,7 +13,7 @@ abstract class UserLocalDataSource {
   Future<UserModel> saveUser({UserModel data});
 
   /// This clears the stored user data
-  Future<UserModel> deleteUser();
+  Future<bool> deleteUser();
 }
 
 final String key = 'userData';
@@ -25,9 +25,6 @@ class UserLocalDataSourceImpl implements UserLocalDataSource {
   @override
   Future<UserModel> getUser() async {
     final data = await pref.getData(key: key);
-    print('figuring out the user data from local');
-    print(data);
-    print(data.toString());
     if (data != null) {
       final value = UserModel.fromJson(json.decode(data));
       return Future.value(value);
@@ -45,17 +42,13 @@ class UserLocalDataSourceImpl implements UserLocalDataSource {
 
   @override
   Future<UserModel> saveUser({UserModel data}) {
-    print('json printing');
-    print(data.toJson());
     final value = json.encode(data.toJson());
-    print('string printing');
-    print(value.toString());
     pref.saveData(key: key, value: value);
     return Future.value(data);
   }
 
   @override
-  Future<UserModel> deleteUser() {
+  Future<bool> deleteUser() {
     return pref.deleteData(key: key);
   }
 }

@@ -13,7 +13,7 @@ abstract class DataLocalDataSource {
   Future<AuthModel> saveResponse({AuthModel data});
 
   /// This clears the stored auth data
-  Future<AuthModel> deleteResponse();
+  Future<bool> deleteResponse();
 }
 
 final String key = 'data';
@@ -24,9 +24,6 @@ class DataLocalDataSourceImpl implements DataLocalDataSource {
   @override
   Future<AuthModel> getResponse() async {
     final data = await pref.getData(key: key);
-    print('figuring out the data from local');
-    print(data);
-    print(data.toString());
     if (data != null) {
       final value = AuthModel.fromJson(json.decode(data));
       return Future.value(value);
@@ -38,19 +35,13 @@ class DataLocalDataSourceImpl implements DataLocalDataSource {
 
   @override
   Future<AuthModel> saveResponse({AuthModel data}) {
-    print('json printing');
-    print(data.toJson());
     final value = json.encode(data.toJson());
-    print('encoded string');
-    print(value);
-    print('string printing');
-    print(value.toString());
     pref.saveData(key: key, value: value);
     return Future.value(data);
   }
 
   @override
-  Future<AuthModel> deleteResponse() {
+  Future<bool> deleteResponse() {
     return pref.deleteData(key: key);
   }
 }

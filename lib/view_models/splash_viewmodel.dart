@@ -11,22 +11,15 @@ class SplashViewModel extends BaseViewModel {
   final pref = locator<DataLocalDataSource>();
 
   _nextPage() async {
-    print('jumping in');
     final data = await pref.getResponse();
-    print('checking...');
-    print(data.id);
     if (data.id == 0) {
-      print('data is null');
       return navigationService.pushNamedAndRemoveUntil('/welcome-view');
     } else {
-      print('data not null');
-      print(data.id);
       return navigationService.pushNamedAndRemoveUntil('/home-view');
     }
   }
 
   handleMove() async {
-    print('moving action taking place');
     Duration duration = Duration(seconds: 5);
     return Timer(duration, _nextPage);
   }

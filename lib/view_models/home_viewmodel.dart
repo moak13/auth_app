@@ -23,8 +23,6 @@ class HomeViewModel extends BaseViewModel {
     setBusy(true);
     final response = await _userService.performUserFetch();
     setBusy(false);
-    print('Checking response data from home view model');
-    print(response);
     if (response.success != null) {
       _userModel = response.success;
       notifyListeners();
@@ -36,11 +34,11 @@ class HomeViewModel extends BaseViewModel {
     return response;
   }
 
-  Future<bool> logout() async {
-    final authResponse = await _dataLocalData.deleteResponse();
-    print(authResponse);
-    final userResponse = await _userLocalData.deleteUser();
-    print(userResponse);
+  Future logout() async {
+    setBusy(true);
+    await _dataLocalData.deleteResponse();
+    await _userLocalData.deleteUser();
+    setBusy(false);
     _navigationService.pushNamedAndRemoveUntil('/login-view');
     _dialogService.showDialog(
       title: 'Info',

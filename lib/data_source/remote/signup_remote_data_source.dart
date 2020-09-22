@@ -28,12 +28,6 @@ class SignupRemoteDataSourceImpl implements SignupRemoteDataSource {
       String email,
       String username,
       String password}) async {
-    print('remote');
-    print(firstname);
-    print(lastname);
-    print(email);
-    print(username);
-    print(password);
     Map<String, dynamic> body = {
       'first_name': firstname,
       'last_name': lastname,
@@ -50,8 +44,6 @@ class SignupRemoteDataSourceImpl implements SignupRemoteDataSource {
     if (response.statusCode == 201) {
       return AuthModel.fromJson(response.body);
     } else {
-      print('error from signup remote');
-      print(response.body);
       throw ServerException.fromJson(response.body);
     }
   }

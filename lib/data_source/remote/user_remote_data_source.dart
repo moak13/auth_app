@@ -32,7 +32,6 @@ class UserRemoteDataSourceImpl implements UserRemoteDataSource {
     if (response.statusCode == 200) {
       return UserModel.fromJson(response.body);
     } else {
-      print('error from signup remote');
       print(response.body);
       throw ServerException(message: response.body);
     }

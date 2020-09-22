@@ -28,12 +28,6 @@ class SignupServiceImpl implements SignupService {
     String username,
     String password,
   }) async {
-    print('service');
-    print(firstname);
-    print(lastname);
-    print(email);
-    print(username);
-    print(password);
     bool isConnected = await networkInfo.isConnected;
     if (isConnected) {
       try {
@@ -47,7 +41,6 @@ class SignupServiceImpl implements SignupService {
         localDataSource.saveResponse(data: response);
         return Result(success: response);
       } on ServerException catch (err) {
-        print('because server error happened: ${err.message}');
         return Result(error: ServerError(err.message));
       }
     } else {

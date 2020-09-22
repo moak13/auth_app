@@ -11,7 +11,10 @@ abstract class PrefHandler {
   Future<void> saveData({String key, String value});
 
   /// This clears the stored data
-  Future<void> deleteData({String key});
+  Future<bool> deleteData({String key});
+
+  /// This clears anything cached
+  Future<bool> clearData();
 }
 
 /// This is an implemetation of [PrefHandler] abstract class
@@ -28,7 +31,12 @@ class PrefHandlerImpl implements PrefHandler {
   }
 
   @override
-  Future<void> deleteData({String key}) {
+  Future<bool> deleteData({String key}) {
     return pref.remove(key);
+  }
+
+  @override
+  Future<bool> clearData() {
+    return pref.clear();
   }
 }
