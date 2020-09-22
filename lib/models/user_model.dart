@@ -1,11 +1,8 @@
 import 'dart:convert';
 
 import 'package:equatable/equatable.dart';
-import 'package:floor/floor.dart';
 
-@entity
 class UserModel extends Equatable {
-  @primaryKey
   final int id;
   final String firstname;
   final String lastname;
