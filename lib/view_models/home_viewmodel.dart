@@ -30,15 +30,12 @@ class HomeViewModel extends BaseViewModel {
       _userError = response.error.message;
       notifyListeners();
     }
-
     return response;
   }
 
   Future logout() async {
-    setBusy(true);
     await _dataLocalData.deleteResponse();
     await _userLocalData.deleteUser();
-    setBusy(false);
     _navigationService.pushNamedAndRemoveUntil('/login-view');
     _dialogService.showDialog(
       title: 'Info',
