@@ -29,6 +29,12 @@ class SignupViewModel extends BaseViewModel {
       String email,
       String username,
       String password}) async {
+    print('View Model');
+    print(firstname);
+    print(lastname);
+    print(email);
+    print(username);
+    print(password);
     setBusy(true);
     final response = await _signupService.performSignup(
         firstname: firstname,
@@ -40,7 +46,7 @@ class SignupViewModel extends BaseViewModel {
     print('in signup viewmodel');
     if (response.success != null) {
       print('Signup Success!');
-      _navigationService.navigateTo('/home_view');
+      _navigationService.pushNamedAndRemoveUntil('/home-view');
       await _dialogService.showDialog(
         title: 'Yay!',
         description: response.success.message,

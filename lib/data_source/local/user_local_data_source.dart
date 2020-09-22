@@ -34,7 +34,8 @@ class UserLocalDataSourceImpl implements UserLocalDataSource {
     } else {
       final value = UserModel(
         id: 0,
-        name: '',
+        firstname: '',
+        lastname: '',
         email: '',
         username: '',
       );

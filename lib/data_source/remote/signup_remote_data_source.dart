@@ -28,6 +28,12 @@ class SignupRemoteDataSourceImpl implements SignupRemoteDataSource {
       String email,
       String username,
       String password}) async {
+    print('remote');
+    print(firstname);
+    print(lastname);
+    print(email);
+    print(username);
+    print(password);
     Map<String, dynamic> body = {
       'first_name': firstname,
       'last_name': lastname,

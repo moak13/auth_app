@@ -7,22 +7,25 @@ import 'package:floor/floor.dart';
 class UserModel extends Equatable {
   @primaryKey
   final int id;
-  final String name;
+  final String firstname;
+  final String lastname;
   final String email;
   final String username;
   UserModel({
     this.id,
-    this.name,
+    this.firstname,
+    this.lastname,
     this.email,
     this.username,
   });
   @override
-  List<Object> get props => [id, name, email, username];
+  List<Object> get props => [id, firstname, lastname, email, username];
 
   Map<String, dynamic> toMap() {
     return {
       'id': id,
-      'name': name,
+      'first_name': firstname,
+      'last_name': lastname,
       'email': email,
       'username': username,
     };
@@ -33,7 +36,8 @@ class UserModel extends Equatable {
 
     return UserModel(
       id: map['id'],
-      name: map['name'],
+      firstname: map['first_name'],
+      lastname: map['last_name'],
       email: map['email'],
       username: map['username'],
     );

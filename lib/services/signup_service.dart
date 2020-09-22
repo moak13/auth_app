@@ -28,6 +28,12 @@ class SignupServiceImpl implements SignupService {
     String username,
     String password,
   }) async {
+    print('service');
+    print(firstname);
+    print(lastname);
+    print(email);
+    print(username);
+    print(password);
     bool isConnected = await networkInfo.isConnected;
     if (isConnected) {
       try {

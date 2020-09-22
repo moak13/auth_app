@@ -8,23 +8,39 @@ import '../locator.dart';
 import '../models/user_model.dart';
 import '../services/user_service.dart';
 
-class HomeViewModel extends FutureViewModel<Result<UserModel>> {
+class HomeViewModel extends BaseViewModel {
   final _userService = locator<UserService>();
   final _navigationService = locator<NavigationService>();
   final _dataLocalData = locator<DataLocalDataSource>();
   final _userLocalData = locator<UserLocalDataSource>();
   final _dialogService = locator<DialogService>();
-  @override
-  Future<Result<UserModel>> futureToRun() {
-    final response = _userService.performUserFetch();
+  UserModel _userModel;
+  UserModel get userModel => _userModel;
+  String _userError;
+  String get userError => _userError;
+
+  Future<Result<UserModel>> fetchUser() async {
+    setBusy(true);
+    final response = await _userService.performUserFetch();
+    setBusy(false);
     print('Checking response data from home view model');
     print(response);
+    if (response.success != null) {
+      _userModel = response.success;
+      notifyListeners();
+    } else {
+      _userError = response.error.message;
+      notifyListeners();
+    }
+
     return response;
   }
 
-  logout() async {
-    await _userLocalData.deleteUser();
-    await _dataLocalData.deleteResponse();
+  Future<bool> logout() async {
+    final authResponse = await _dataLocalData.deleteResponse();
+    print(authResponse);
+    final userResponse = await _userLocalData.deleteUser();
+    print(userResponse);
     _navigationService.pushNamedAndRemoveUntil('/login-view');
     _dialogService.showDialog(
       title: 'Info',

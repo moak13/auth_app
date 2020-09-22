@@ -97,7 +97,9 @@ class _LoginViewState extends State<LoginView> {
                         child: model.isBusy
                             ? Center(
                                 child: CircularProgressIndicator(
-                                  backgroundColor: Colors.white,
+                                  //backgroundColor: Colors.white,
+                                  valueColor:
+                                      AlwaysStoppedAnimation(Colors.white),
                                   strokeWidth: 2,
                                 ),
                               )
