@@ -22,7 +22,7 @@ class _HomeViewState extends State<HomeView> {
               title: Text('Home'),
               actions: <Widget>[
                 IconButton(
-                  icon: Icon(Icons.exit_to_app),
+                  icon: Icon(Icons.edit),
                   onPressed: () {},
                 )
               ],
@@ -41,7 +41,9 @@ class _HomeViewState extends State<HomeView> {
                           ),
                           Padding(
                             padding: const EdgeInsets.all(8.0),
-                            child: Text(model.data.success.name),
+                            child: Text(model.data.success.name != null
+                                ? model.data.success.name
+                                : 'Name not found'),
                           ),
                           Padding(
                             padding: const EdgeInsets.all(8.0),
@@ -49,7 +51,9 @@ class _HomeViewState extends State<HomeView> {
                           ),
                           Padding(
                             padding: const EdgeInsets.all(8.0),
-                            child: Text(model.data.success.email),
+                            child: Text(model.data.success.email != null
+                                ? model.data.success.email
+                                : 'Email not found'),
                           ),
                           Padding(
                             padding: const EdgeInsets.all(8.0),
@@ -57,7 +61,9 @@ class _HomeViewState extends State<HomeView> {
                           ),
                           Padding(
                             padding: const EdgeInsets.all(8.0),
-                            child: Text(model.data.success.username),
+                            child: Text(model.data.success.username != null
+                                ? model.data.success.username
+                                : 'Username not found'),
                           ),
                           Padding(
                             padding: const EdgeInsets.all(10.0),

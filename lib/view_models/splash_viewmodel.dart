@@ -17,11 +17,11 @@ class SplashViewModel extends BaseViewModel {
     print(data.id);
     if (data.id == 0) {
       print('data is null');
-      return navigationService.navigateTo('/welcome-view');
+      return navigationService.pushNamedAndRemoveUntil('/welcome-view');
     } else {
       print('data not null');
       print(data.id);
-      return navigationService.navigateTo('/home-view');
+      return navigationService.pushNamedAndRemoveUntil('/home-view');
     }
   }
 

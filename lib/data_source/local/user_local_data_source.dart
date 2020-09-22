@@ -29,7 +29,7 @@ class UserLocalDataSourceImpl implements UserLocalDataSource {
     print(data);
     print(data.toString());
     if (data != null) {
-      final value = UserModel.fromJson(json.encode(data));
+      final value = UserModel.fromJson(json.decode(data));
       return Future.value(value);
     } else {
       final value = UserModel(
@@ -46,10 +46,10 @@ class UserLocalDataSourceImpl implements UserLocalDataSource {
   Future<UserModel> saveUser({UserModel data}) {
     print('json printing');
     print(data.toJson());
-    final value = json.decode(data.toString());
+    final value = json.encode(data.toJson());
     print('string printing');
     print(value.toString());
-    pref.saveData(key: key, value: value.toString());
+    pref.saveData(key: key, value: value);
     return Future.value(data);
   }
 
